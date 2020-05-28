@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Enrollments</title>
+    <link rel="stylesheet" href="enrollments.css" type="text/css" />
+</head>
+
+<body>
+    <table id="enrollmentsTable">
+        <thead>
+            <th>Course Id</th>
+            <th>Course Name</th>
+            <th>Student Id</th>
+            <th>Student Name</th>
+        </thead>
+        <tbody>
+            <% for(var i = 0;i < enrollments.length;i++) {%>
+            <tr>
+                <td><%=enrollments[i].CourseId %></td>
+                <td><%=enrollments[i].CourseName %></td>
+                <td><%=enrollments[i].StudentId%></td>
+                <td><%=enrollments[i].StudentFirstName + enrollments[i].StudentLastName%></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <form action="/enroll" method="POST">
+        <p>Course Id<input type="text" name="courseId" /></p>
+        <p>Student Id<input type="text" name="studentId" /></p>
+        <input type="submit" value="Enroll" />
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <table id="students">
+        <thead>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+        </thead>
+        <tbody id="studentTableBody">
+            <% for(var i = 0;i<students.length;i++) { %>
+            <tr>
+                <td><%= students[i].Id %></td>
+                <td><%= students[i].FirstName %></td>
+                <td><%= students[i].LastName %></td>
+                <td><a href="http://localhost:8080/enrollments?studentId=<%= students[i].Id %> ">Enrollments</a></td>
+            </tr>
+            <% } %>
+
+        </tbody>
+    </table>
+    <p>First Name<input type="text" id="studentFirstName" /></p>
+    <p>Last Name<input type="text" id="studentLastName" /></p>
+    <p>Id<input type="number" id="studentId" /></p>
+    <p><input id="addNewStudent" value="Add New Student" type="button" /></p>
+    <script>
+
+        $('#addNewStudent').click(function (e) {
+            console.log('Eneterd click handler')
+            let firstName = $('#studentFirstName').val();
+            let lastName = $('#studentLastName').val();
+            let studentId = $('#studentId').val();
+            let xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    let row = document.createElement('tr')
+                    let fname = document.createElement('td')
+                    let lname = document.createElement('td')
+                    let id = document.createElement('td')
+                    let enrollmentsCell = document.createElement('td')
+                    let enrollmentsAnchor = document.createElement('a')
+                    enrollmentsAnchor.href = "http:localhost:8080/enrollments&studentId="+studentId
+                    fname.innerHTML = firstName
+                    lname.innerHTML = lastName
+                    id.innerHTML = studentId
+                    row.appendChild(id)
+                    row.appendChild(fname)
+                    row.appendChild(lname)
+                    enrollmentsCell.appendChild(enrollmentsAnchor)
+                    row.appendChild(enrollmentsCell)
+                    document.getElementById('studentTableBody').appendChild(row)
+
+                }
+
+            }
+            xhr.open('POST', 'http://localhost:8080/addstudent', true)
+            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+            xhr.send('FirstName=' + firstName + '&LastName=' + lastName + '&Id=' + studentId)
+
+        })
+    </script>
+    <p><a href="http://localhost:8080/courses">See courses</a></p>
+</body>
+
+</html>

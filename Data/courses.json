@@ -1,0 +1,22 @@
+[
+    {
+        "Name": "Geometrie si Algebra liniara",
+        "Professor": "Iulia Hirica",
+        "Id": 1
+    },
+    {
+        "Name": "Structuri Algebrice",
+        "Professor": "Gabriel Mincu",
+        "Id": 2
+    },
+    {
+        "Name": "Tehnici Web",
+        "Professor": "Carmen Chirita",
+        "Id": 3
+    },
+    {
+        "Name": "Logica Matematica",
+        "Professor": "Claudia Muresan",
+        "Id": 4
+    }
+]

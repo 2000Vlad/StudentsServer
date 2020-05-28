@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Courses</title>
+    <link rel="stylesheet" href="courses.css" type="text/css"/>
+</head>
+
+<body>
+    <table id="coursesTable">
+        <thead>
+            <th>
+                Course ID
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Professor
+            </th>
+        </thead>
+        <tbody>
+            <% for(var i = 0;i < courses.length;i++){ %>
+                <tr>
+                    <td><%= courses[i].Id %> </td>
+                    <td><%= courses[i].Name %></td>
+                    <td><%= courses[i].Professor %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>
